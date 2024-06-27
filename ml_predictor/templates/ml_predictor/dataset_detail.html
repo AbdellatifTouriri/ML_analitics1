@@ -1,0 +1,120 @@
+<!-- ml_predictor/templates/ml_predictor/dataset_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Dataset</title>
+    <!-- Include any CSS frameworks or stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Include Plotly CSS (optional) -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Include any custom CSS -->
+    <style>
+        /* Custom CSS styles */
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">ML Predictor</a>
+        <!-- Add navigation links here -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'upload_dataset' %}">Upload Dataset</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <!-- Add more navigation links as needed -->
+        </ul>
+    </nav>
+    <!-- Main content -->
+    <div class="container mt-5">
+        <h1>Dataset Detail: {{ dataset.name }}</h1>
+        <!-- Display other dataset details if needed -->
+
+
+    </div>
+    <!-- Main content -->
+    <div class="container mt-5">
+        <h2>Dataset Detail</h2>
+        <p><strong>Dataset Name:</strong> {{ dataset.name }}</p>
+        <p><strong>File:</strong> {{ dataset.file.name }}</p>
+
+        <h3>Statistics</h3>
+        <ul>
+            <li><strong>Number of rows:</strong> {{ stats.Nombre_de_lignes }}</li>
+            <li><strong>Number of columns:</strong> {{ stats.Nombre_de_colonnes }}</li>
+            <li><strong>Mean:</strong>
+                <ul>
+                    {% for key, value in stats.Moyenne.items %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><strong>Standard Deviation:</strong>
+                <ul>
+                    {% for key, value in stats.Ecart_type.items %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><strong>Minimum:</strong>
+                <ul>
+                    {% for key, value in stats.Minimum.items %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><strong>Maximum:</strong>
+                <ul>
+                    {% for key, value in stats.Maximum.items %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+
+        <div id="plotly-graph">
+            {{ graph_div|safe }}  <!-- Use safe filter to render HTML -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">ML Predictor &copy; 2024</span>
+        </div>
+    </footer>
+
+    <!-- Include any JavaScript scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-N4mT7L27to6F8aCU+j0LrC7YbHFSyCOcHHp2qzv8K/wOhpLA/7SZ9Nxh3p/9w8ma" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh6Dl1jt0W1vVXq1PE0Jw9+1JF2nW2ww+aW+0" crossorigin="anonymous"></script>
+    <!-- Include Plotly JS (optional) -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Include any custom JavaScript -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

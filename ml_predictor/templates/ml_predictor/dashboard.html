@@ -1,0 +1,48 @@
+<!-- ml_predictor/templates/ml_predictor/dashboard.html -->
+
+{% extends 'ml_predictor/base.html' %}
+
+{% block title %}
+Dashboard des Statistiques - ML Predictor
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">Dashboard des Statistiques</h1>
+    </div>
+</div>
+
+<div class="row">
+    {% for dataset, stats in dataset_stats %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title">{{ dataset.name }}</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Nombre de lignes: {{ stats.nb_rows }}</li>
+                    <li class="list-group-item">Nombre de colonnes: {{ stats.nb_columns }}</li>
+                    <!-- Add more statistics as needed -->
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'dataset_detail' dataset_id=dataset.id %}" class="btn btn-primary btn-sm">Voir les détails</a>
+            </div>
+              <div class="card-footer">
+                <a href="{% url 'dataset_graph' dataset_id=dataset.id %}" class="btn btn-primary btn-sm">Voir les détails</a>
+            </div>
+             <div class="card-footer">
+                <a href="{% url 'data_preprocessing' dataset_id=dataset.id %}" class="btn btn-primary btn-sm">Voir les détails</a>
+                        <a href="{% url 'delete_dataset' dataset_id=dataset.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete {{ dataset.name }}?')">Supprimer</a>
+
+             </div>
+
+
+            <!-- Add other footer links as needed -->
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

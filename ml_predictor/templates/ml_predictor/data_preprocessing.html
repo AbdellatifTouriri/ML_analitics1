@@ -1,0 +1,22 @@
+<!-- ml_predictor/templates/ml_predictor/data_preprocessing.html -->
+
+{% extends 'ml_predictor/base.html' %}
+
+{% block title %}
+Data Preprocessing - ML Predictor
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="mb-4">Data Preprocessing</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary mt-2">Preprocess Data</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'ml_predictor/base.html' %}
+
+{% block content %}
+<h2>Select Graph Options</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Generate Graph</button>
+</form>
+
+{% if graph %}
+    <h3>Generated Graph</h3>
+    <img src="data:image/png;base64,{{ graph }}" alt="Graph">
+{% endif %}
+{% endblock %}
